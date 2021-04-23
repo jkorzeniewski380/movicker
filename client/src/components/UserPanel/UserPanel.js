@@ -91,8 +91,6 @@ function UserPanel({data, setData}) {
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
 
-    console.log(data);
-
     const handlePanel = () => {
       setIsOpen(!isOpen);
     };
