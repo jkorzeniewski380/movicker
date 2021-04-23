@@ -1,0 +1,33 @@
+#container {
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    'aside header'
+    'content content'
+    'footer footer';
+  grid-template-columns: 50px auto;
+  grid-template-rows: 100px auto 50px;
+}
+
+#mainHeader,
+#mainFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#mainHeader {
+  grid-area: header;
+}
+
+#mainHeader > * {
+  transform: translateX(-25px);
+}
+
+#userPanel {
+  grid-area: aside;
+}
+
+#mainFooter {
+  grid-area: footer;
+}
