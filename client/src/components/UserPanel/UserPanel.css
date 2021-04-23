@@ -26,7 +26,7 @@
   z-index: 900;
   overflow: auto;
   top: 0px;
-  left: -45%;
+  left: min(-45%, -320px);
   width: max(45%, 320px);
   opacity: 0;
   height: 100%;
