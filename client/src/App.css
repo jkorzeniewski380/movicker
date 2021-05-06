@@ -2,9 +2,9 @@
   height: 100%;
   display: grid;
   grid-template-areas:
-    'aside header'
-    'content content'
-    'footer footer';
+	'aside header'
+	'content content'
+	'footer footer';
   grid-template-columns: 50px auto;
   grid-template-rows: 100px auto 50px;
 }

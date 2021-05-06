@@ -18,15 +18,13 @@ function MovieCard(props) {
             method: 'POST',
             data: { movie: props.movie }
         })
-            .then((res) => {
-                if (res.status === 403) {
-                    alert("You need to be logged in to use this feature");
-                    return;
-                }
-
-                console.log(res.data);
-            })
-            .catch((err) => console.log(err));
+            .then(res => console.log(res.data))
+            .catch((err) => {
+                if (err.response && err.response.status === 403)
+                    alert("You need to be logged in to use this feature") 
+                else
+                    console.log(err);
+            });
     };
 
     const remove = (event) => {
@@ -37,11 +35,6 @@ function MovieCard(props) {
             method: 'POST',
             data: { movie: props.movie }
         }).then((res) => {
-                if (res.status === 403) {
-                    console.log("ERROR - Tried to remove from favourites without being logged in");
-                    return;
-                }
-
                 if(props.areFav) {
                     let left = props.movies.slice(0, props.rendered);
                     let right = props.movies.slice(props.rendered + 1);
@@ -50,7 +43,12 @@ function MovieCard(props) {
                     props.setMovies(left.concat(right));
                 }
             })
-            .catch(() => console.log("An error occured"));
+            .catch(err => {
+                if (err.response && err.response.status === 403)
+                    console.log("ERROR - Tried to remove from favourites without being logged in");
+                else
+                    console.log(err);
+            });
     };
 
     useEffect(() => {

@@ -26,19 +26,16 @@ function UserForm(props) {
           setEmail("");
           setPassword("");
 
-          if (res.status === 404)
+          if (source === "login")
+            props.setData(res.data);
+          else
             alert(res.data);
-
-          if (res.status === 200) {
-            if (source === "login")
-              props.setData(res.data);
-            else
-              alert(res.data);
-          }
         })
         .catch((err) => {
-          alert("Sorry, something went wrong");
-          console.log(err);
+          if (err.response && err.response.status === 404)
+            alert(err.response.data);
+          else
+            console.log(err);
         });
     };
     
@@ -101,13 +98,14 @@ function UserPanel({data, setData}) {
           method: 'POST'
         })
           .then((res) => {
-            if (res.status === 403) {
-              alert(res.data);
-              return;
-            }
-
             setData(null);
             alert(res.data);
+          })
+          .catch(err => {
+            if (err.response && err.response.status === 403)
+              alert(err.response.data);
+            else
+              console.log(err);
           });
     }
 

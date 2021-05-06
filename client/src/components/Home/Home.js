@@ -12,7 +12,7 @@ function Home({data}) {
 
     useEffect(() => {
         const getPopular = async () => {
-            const url = "https://api.themoviedb.org/3/movie/popular?api_key=200341856882729a54726055a4af051e&language=en-US";
+            const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
 
             try {
                 const res = await fetch(url);
@@ -38,7 +38,7 @@ function Home({data}) {
             return;
         }
 
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=200341856882729a54726055a4af051e&language=en-US&query=${name}&page=1&include_adult=false`;
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${name}&page=1&include_adult=false`;
 
         try {
             const res = await fetch(url);

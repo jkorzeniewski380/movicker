@@ -12,7 +12,10 @@
     "start": "node server.js",
     "dev": "concurrently \"nodemon server.js\" \"npm run client\""
   },
-  "keywords": ["Movies", "Movie picker"],
+  "keywords": [
+    "Movies",
+    "Movie picker"
+  ],
   "author": "Jakub Korzeniewski",
   "license": "ISC",
   "dependencies": {

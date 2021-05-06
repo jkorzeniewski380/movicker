@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8080;
 const initializePassport = require('./authentication/passport-config');
 initializePassport(passport);
 
-const MONGODB_URI = "mongodb+srv://movieAdmin:WOLkLwyMRsXwvKxy@cluster0.vdi5p.mongodb.net/movie-picker?retryWrites=true&w=majority";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/movie-picker";
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
@@ -20,7 +20,7 @@ mongoose.connect(MONGODB_URI, {
 .catch(err => console.log(err));
 
 app.use(session({
-    secret: 'guweh1293845nsp2h12hf98auh173pasojf31',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false
 }));
